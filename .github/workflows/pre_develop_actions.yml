@@ -33,7 +33,7 @@ jobs:
 
     - name: Create Debian Package
       run: |
-        fpm -C package -s dir -t deb -n "hello_world" -v 0.1.0 -p hello_world.deb
+        fpm -chdir package -s dir -t deb -n "hello_world" -v 0.1.0 -p hello_world.deb
 
     - name: Upload Package Artifacts
       uses: actions/upload-artifact@v3
