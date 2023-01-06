@@ -1,2 +1,2 @@
-# Pi-Alert
-Raspberry Pi based CellBroadcast alerting
+# CellSiren
+Linux based CellBroadcast alerting
