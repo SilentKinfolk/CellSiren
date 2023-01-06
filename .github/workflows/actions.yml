@@ -23,3 +23,12 @@ jobs:
       with:
         name: hello_world
         path: dist/
+
+    - name: Release with Notes
+      uses: softprops/action-gh-release@v1
+      with:
+        files: dist/hello_world
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          prerelease: true
