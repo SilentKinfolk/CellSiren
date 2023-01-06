@@ -45,7 +45,7 @@ jobs:
 
     - name: Create Arch Package
       run: |
-        fpm -C package -s dir -t pacman -n "hello_world" -v 0.1.0 -p hello_world.pkg.tar.xz
+        fpm -C package -s dir -t pacman -n "hello_world" -v 0.1.0 -p hello_world.pkg.tar.zst
 
     - name: Release with Notes
       uses: softprops/action-gh-release@v1
