@@ -39,10 +39,17 @@ jobs:
       run: |
         fpm -C package -s dir -t deb -n "hello_world" -v 0.1.0 -p hello_world.deb
 
+    - name: Create RedHat/Fedora Package
+      run: |
+        fpm -C package -s dir -t rpm -n "hello_world" -v 0.1.0 -p hello_world.rpm
+
     - name: Release with Notes
       uses: softprops/action-gh-release@v1
       with:
-        files: hello_world.deb
+        files: |
+            hello_world.deb
+            hello_world.rpm
+            hello_world.pkg.tar.xz
         tag_name: ${{ github.ref }}
         prerelease: true
       env:
