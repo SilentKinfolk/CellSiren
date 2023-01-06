@@ -10,14 +10,30 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    -name: Pull Objects
     - uses: actions/checkout@v3
 
-    - name: Package Application
+    - name: Make Package Directories
+    - run: mkdir package/opt
+
+    - name: Create Python Package
       uses: JackMcKew/pyinstaller-action-linux@main
       with:
         path: src
 
+    - name: Copy Python Packag
+    - run: cp -r /src/dist/linux/hello_world package/opt/hello_world
+
+    - name: Setup FPM
+    - uses: fortran-lang/setup-fpm@v5
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Create Debian Package
+    - run: fpm -C package -s dir -t deb -n "hello_world" -v 0.1.0 -p hello_world.deb
+
+    - name: Upload Package Artifacts
     - uses: actions/upload-artifact@v3
       with:
         name: hello_world
-        path: src/dist/linux/hello_world
+        path: hello_world.deb
