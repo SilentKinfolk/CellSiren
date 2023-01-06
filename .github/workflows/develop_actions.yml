@@ -15,12 +15,12 @@ jobs:
     - name: Package Application
       uses: JackMcKew/pyinstaller-action-linux@main
       with:
-        path: 
+        path: src
 
     - uses: actions/upload-artifact@v2
       with:
         name: hello_world
-        path: dist/
+        path: src/dist/
 
     - name: Release with Notes
       uses: softprops/action-gh-release@v1
