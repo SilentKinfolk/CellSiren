@@ -39,8 +39,16 @@ jobs:
       run: |
         fpm -C package -s dir -t deb -n "hello_world" -v 0.1.0 -p hello_world.deb
 
+    - name: Create RedHat/Fedora Package
+      run: |
+        fpm -C package -s dir -t rpm -n "hello_world" -v 0.1.0 -p hello_world.rpm
+
+    - name: Create Arch Package
+      run: |
+        fpm -C package -s dir -t pacman -n "hello_world" -v 0.1.0 -p hello_world.pkg.tar.xz
+
     - name: Upload Package Artifacts
       uses: actions/upload-artifact@v3
       with:
         name: hello_world
-        path: hello_world.deb
+        path: hello_world.*
