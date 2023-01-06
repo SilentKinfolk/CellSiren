@@ -11,7 +11,7 @@ jobs:
 
     steps:
     - name: Pull Objects
-    - uses: actions/checkout@v3
+      uses: actions/checkout@v3
 
     - name: Make Package Directories
       run: |
@@ -27,7 +27,7 @@ jobs:
         cp -r /src/dist/linux/hello_world package/opt/hello_world
 
     - name: Setup FPM
-    - uses: fortran-lang/setup-fpm@v5
+      uses: fortran-lang/setup-fpm@v5
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
 
@@ -36,7 +36,7 @@ jobs:
         fpm -C package -s dir -t deb -n "hello_world" -v 0.1.0 -p hello_world.deb
 
     - name: Upload Package Artifacts
-    - uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v3
       with:
         name: hello_world
         path: hello_world.deb
