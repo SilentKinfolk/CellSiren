@@ -33,7 +33,7 @@ jobs:
 
     - name: Create Debian Package
       run: |
-        fpm run
+        fpm -h
 
     - name: Upload Package Artifacts
       uses: actions/upload-artifact@v3
