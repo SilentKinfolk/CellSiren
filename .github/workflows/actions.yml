@@ -28,6 +28,7 @@ jobs:
       uses: softprops/action-gh-release@v1
       with:
         files: dist/hello_world
+        tag_name: ${{ github.ref }}
         prerelease: true
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
