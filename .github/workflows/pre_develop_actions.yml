@@ -33,7 +33,7 @@ jobs:
 
     - name: Install FPM
       run: |
-        gem install fpm -v 1.14.2
+        gem install fpm
 
     - name: Create Debian Package
       run: |
