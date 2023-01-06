@@ -15,7 +15,7 @@ jobs:
 
     - name: Make Package Directories
       run: |
-        mkdir package/opt
+        mkdir -p package/opt
 
     - name: Create Python Package
       uses: JackMcKew/pyinstaller-action-linux@main
