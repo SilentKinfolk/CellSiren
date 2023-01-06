@@ -26,14 +26,18 @@ jobs:
       run: |
         cp -r src/dist/linux/hello_world package/opt/hello_world
 
-    - name: Setup FPM
-      uses: fortran-lang/setup-fpm@v5
+    - name: Setup Ruby
+      uses: ruby/setup-ruby@v1.133.0
       with:
-        github-token: ${{ secrets.GITHUB_TOKEN }}
+        ruby-version: 3.2.0
+
+    - name: Install FPM
+      run: |
+        gem install fpm
 
     - name: Create Debian Package
       run: |
-        fpm build -C package -s dir -t deb -n "hello_world" -v 0.1.0 -p hello_world.deb
+        fpm -C package -s dir -t deb -n "hello_world" -v 0.1.0 -p hello_world.deb
 
     - name: Upload Package Artifacts
       uses: actions/upload-artifact@v3
