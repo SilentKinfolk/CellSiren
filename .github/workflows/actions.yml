@@ -3,8 +3,6 @@ name: Package Application with Pyinstaller
 on:
   push:
     branches: [ develop ]
-  pull_request:
-    branches: [ develop ]
 
 jobs:
   build:
