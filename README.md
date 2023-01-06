@@ -1,2 +1,2 @@
 # CellSiren
-Linux based CellBroadcast alerting
+Linux based CellBroadcast alerting application
