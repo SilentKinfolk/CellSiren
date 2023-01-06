@@ -1,7 +1,7 @@
 name: Package Application with Pyinstaller
 
 on:
-  push:
+  pull_request:
     branches: [ develop ]
 
 jobs:
@@ -15,18 +15,9 @@ jobs:
     - name: Package Application
       uses: JackMcKew/pyinstaller-action-linux@main
       with:
-        path: /
+        path: 
 
     - uses: actions/upload-artifact@v2
       with:
         name: hello_world
         path: dist/
-
-    - name: Release with Notes
-      uses: softprops/action-gh-release@v1
-      with:
-        files: dist/hello_world
-        tag_name: ${{ github.ref }}
-        prerelease: true
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
