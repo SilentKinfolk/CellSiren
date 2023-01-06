@@ -33,7 +33,7 @@ jobs:
 
     - name: Install FPM
       run: |
-        gem install fpm -v 1.1
+        gem install fpm -v 1.15.0
 
     - name: Create Debian Package
       run: |
@@ -42,5 +42,5 @@ jobs:
     - name: Upload Package Artifacts
       uses: actions/upload-artifact@v3
       with:
-        name: hello_world.deb
+        name: hello_world
         path: hello_world.deb
