@@ -43,10 +43,6 @@ jobs:
       run: |
         fpm -C package -s dir -t rpm -n "hello_world" -v 0.1.0 -p hello_world.rpm
 
-    - name: Create Arch Package
-      run: |
-        fpm -C package -s dir -t pacman -n "hello_world" -v 0.1.0
-
     - name: Release with Notes
       uses: softprops/action-gh-release@v1
       with:
