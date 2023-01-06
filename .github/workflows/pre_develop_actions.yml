@@ -1,4 +1,4 @@
-name: Package Application with Pyinstaller
+name: Package Application
 
 on:
   pull_request:
@@ -10,14 +10,37 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
+    - name: Pull Objects
+      uses: actions/checkout@v3
 
-    - name: Package Application
+    - name: Make Package Directories
+      run: |
+        mkdir -p package/opt
+
+    - name: Create Python Package
       uses: JackMcKew/pyinstaller-action-linux@main
       with:
-        path: 
+        path: src
 
-    - uses: actions/upload-artifact@v2
+    - name: Copy Python Package
+      run: |
+        cp -r src/dist/linux/hello_world package/opt/hello_world
+
+    - name: Setup Ruby
+      uses: ruby/setup-ruby@v1.133.0
+      with:
+        ruby-version: 2.7
+
+    - name: Install FPM
+      run: |
+        gem install fpm
+
+    - name: Create Debian Package
+      run: |
+        fpm -C package -s dir -t deb -n "hello_world" -v 0.1.0 -p hello_world.deb
+
+    - name: Upload Package Artifacts
+      uses: actions/upload-artifact@v3
       with:
         name: hello_world
-        path: dist/
+        path: hello_world.deb
