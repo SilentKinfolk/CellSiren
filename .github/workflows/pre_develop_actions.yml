@@ -1,4 +1,4 @@
-name: Package Application with Pyinstaller
+name: Package Application
 
 on:
   pull_request:
@@ -14,15 +14,15 @@ jobs:
     - uses: actions/checkout@v3
 
     - name: Make Package Directories
-    - run: mkdir package/opt
+      run: mkdir package/opt
 
     - name: Create Python Package
       uses: JackMcKew/pyinstaller-action-linux@main
       with:
         path: src
 
-    - name: Copy Python Packag
-    - run: cp -r /src/dist/linux/hello_world package/opt/hello_world
+    - name: Copy Python Package
+      run: cp -r /src/dist/linux/hello_world package/opt/hello_world
 
     - name: Setup FPM
     - uses: fortran-lang/setup-fpm@v5
@@ -30,7 +30,7 @@ jobs:
         github-token: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Create Debian Package
-    - run: fpm -C package -s dir -t deb -n "hello_world" -v 0.1.0 -p hello_world.deb
+      run: fpm -C package -s dir -t deb -n "hello_world" -v 0.1.0 -p hello_world.deb
 
     - name: Upload Package Artifacts
     - uses: actions/upload-artifact@v3
