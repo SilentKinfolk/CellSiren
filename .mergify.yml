@@ -1,7 +1,18 @@
 pull_request_rules:
-  - name: Automatic merge on approval
+  - name: automatic develop for main when CI passes and 2 reviews and not WIP
     conditions:
-      - "#approved-reviews-by>=1"
+      - check-success=build
+      - check-success=Lint Code Base
+      - base=develop
+      - label!=work-in-progress
+    actions:
+      merge:
+        method: merge
+  - name: automatic merge for main when CI passes and 2 reviews and not WIP
+    conditions:
+      - check-success=build
+      - check-success=Lint Code Base
+      - base=master
     actions:
       merge:
         method: merge
