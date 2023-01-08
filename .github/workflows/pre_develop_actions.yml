@@ -28,7 +28,7 @@ jobs:
       run: |
         cp -r src/dist/linux/hello_world package/opt/hello_world
         cp src/dist/linux/hello_world/icons/penguin.svg package/usr/share/icons/hicolor/scalable/apps/hello_world.svg
-        cp src/dist/linux/hello_world/hello_world.desktop package/usr/share/applications
+        cp src/dist/linux/hello_world.desktop package/usr/share/applications
 
     - name: Apply Permissions
       run: |
