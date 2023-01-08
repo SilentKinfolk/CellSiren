@@ -35,7 +35,7 @@ jobs:
         find package/opt/hello_world -type f -exec chmod 644 -- {} +
         find package/opt/hello_world -type d -exec chmod 755 -- {} +
         find package/usr/share -type f -exec chmod 644 -- {} +
-        chmod +x package/opt/hello_world/hello_world
+        chmod +x package/opt/hello_world
 
     - name: Setup Ruby
       uses: ruby/setup-ruby@v1.133.0
