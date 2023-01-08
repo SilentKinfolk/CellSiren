@@ -1,11 +1,11 @@
-name: Package Application
+name: Test Package Application
 
 on:
   pull_request:
     branches: [ develop ]
 
 jobs:
-  build:
+  Test Package Application:
 
     runs-on: ubuntu-latest
 
