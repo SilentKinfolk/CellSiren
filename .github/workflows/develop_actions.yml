@@ -5,7 +5,7 @@ on:
     branches: [ master ]
 
 jobs:
-  PackageAppication:
+  PackageApplication:
 
     runs-on: ubuntu-latest
 
