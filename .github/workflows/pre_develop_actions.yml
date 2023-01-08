@@ -16,6 +16,8 @@ jobs:
     - name: Make Package Directories
       run: |
         mkdir -p package/opt
+        mkdir -p package/usr/share/applications
+        mkdir -p package/usr/share/icons/hicolor/scalable/apps
 
     - name: Create Python Package
       uses: JackMcKew/pyinstaller-action-linux@main
@@ -25,6 +27,15 @@ jobs:
     - name: Copy Python Package
       run: |
         cp -r src/dist/linux/hello_world package/opt/hello_world
+        cp src/icons/penguin.svg package/usr/share/icons/hicolor/scalable/apps/hello_world.svg
+        cp src/hello_world.desktop package/usr/share/applications
+
+    - name: Apply Permissions
+      run: |
+        find package/opt/hello_world -type f -exec chmod 644 -- {} +
+        find package/opt/hello_world -type d -exec chmod 755 -- {} +
+        find package/usr/share -type f -exec chmod 644 -- {} +
+        chmod +x package/opt/hello_world
 
     - name: Setup Ruby
       uses: ruby/setup-ruby@v1.133.0
@@ -37,11 +48,11 @@ jobs:
 
     - name: Create Debian Package
       run: |
-        fpm -C package -s dir -t deb -n "hello_world" -v 0.1.0 -p hello_world.deb
+        fpm -C package -s dir -t deb -n "hello_world" -p hello_world.deb
 
     - name: Create RedHat/Fedora Package
       run: |
-        fpm -C package -s dir -t rpm -n "hello_world" -v 0.1.0 -p hello_world.rpm
+        fpm -C package -s dir -t rpm -n "hello_world" -p hello_world.rpm
 
     - name: Upload Package Artifacts
       uses: actions/upload-artifact@v3
