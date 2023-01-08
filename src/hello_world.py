@@ -1,4 +1,12 @@
-from PyQt6.QtWidgets import QMainWindow, QApplication, QLabel, QVBoxLayout, QPushButton, QWidget
+from PyQt6.QtWidgets import (
+    QMainWindow,
+    QApplication,
+    QLabel,
+    QVBoxLayout,
+    QPushButton,
+    QWidget,
+)
+
 from PyQt6.QtGui import QIcon
 import sys
 import os
@@ -30,7 +38,8 @@ class MainWindow(QMainWindow):
 
         self.show()
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     app = QApplication(sys.argv)
     app.setWindowIcon(QIcon(os.path.join(basedir, "icons", "penguin.svg")))
     w = MainWindow()
