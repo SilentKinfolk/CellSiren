@@ -1,11 +1,13 @@
 from PyQt6.QtWidgets import QMainWindow, QApplication, QLabel, QVBoxLayout, QPushButton, QWidget
 from PyQt6.QtGui import QIcon
-import sys, os
+import sys
+import os
 
 basedir = os.path.dirname(__file__)
 
 
 class MainWindow(QMainWindow):
+
 
     def __init__(self):
         super().__init__()

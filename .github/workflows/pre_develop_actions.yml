@@ -48,11 +48,11 @@ jobs:
 
     - name: Create Debian Package
       run: |
-        fpm -C package -s dir -t deb -n "hello_world" -v 0.1.0 -p hello_world.deb
+        fpm -C package -s dir -t deb -n "hello_world" -p hello_world.deb
 
     - name: Create RedHat/Fedora Package
       run: |
-        fpm -C package -s dir -t rpm -n "hello_world" -v 0.1.0 -p hello_world.rpm
+        fpm -C package -s dir -t rpm -n "hello_world" -p hello_world.rpm
 
     - name: Upload Package Artifacts
       uses: actions/upload-artifact@v3
