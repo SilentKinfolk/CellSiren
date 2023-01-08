@@ -2,7 +2,7 @@ name: Package Application
 
 on:
   push:
-    branches: [ develop ]
+    branches: [ master ]
 
 jobs:
   PackageAppication:
