@@ -5,7 +5,7 @@ on:
     branches: [ develop ]
 
 jobs:
-  Test Package Application:
+  TestPackageApplication:
 
     runs-on: ubuntu-latest
 
